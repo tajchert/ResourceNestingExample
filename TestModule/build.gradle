@@ -1,4 +1,4 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
@@ -9,18 +9,14 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        multiDexEnabled = true
     }
     sourceSets {
         main {
-            manifest.srcFile '/src/main/AndroidManifest.xml'
-            java.srcDirs = ['/src/main/java','.apt_generated']
-            aidl.srcDirs = ['/src/main/aidl','.apt_generated']
-            assets.srcDirs = ['/src/main/assets']
-            res.srcDirs =
-            [
-                    '/src/main/res/layouts/layouts_category2',
-                    '/src/main/res/layouts',
-                    '/src/main/res'
+            res.srcDirs += [
+                    'src/main/res',
+                    'src/main/res/layouts',
+                    'src/main/res/layouts/layouts_category2'
             ]
         }
     }
@@ -28,4 +24,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    compile 'com.jakewharton:butterknife:7.0.1'
 }
